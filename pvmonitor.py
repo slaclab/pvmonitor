@@ -1,11 +1,11 @@
 import math
 import time
-from datetime import datetime
 
 import epics
 import matplotlib.pyplot as plt
 import pandas as pd
 from IPython import display
+from typing import List, Callable
 
 
 class PvMonitor:
@@ -27,7 +27,6 @@ class PvMonitor:
 
         self.data = pd.DataFrame()
         self.interval = interval
-        self.dump_file = dump_file
         self.time_window = time_window
         self.sample_callback = sample_callback
 
