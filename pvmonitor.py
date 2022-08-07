@@ -21,7 +21,7 @@ class PvMonitor:
         :param pv_list: list of PVs to monitor
         :param interval: time between samples (seconds)
         :param time_window: time window for plotting (seconds)
-        :param sample_callback: function to call to get additional data to add to the sample
+        :param sample_callback: function to call to get additional data to add to the sample, callable should return a dict
         """
         self.pv_list = pv_list
 
@@ -47,12 +47,6 @@ class PvMonitor:
 
     def plot(self, fig, axes):
         display.clear_output(wait=True)
-        try:
-            start_time = (
-                time.time() - self.time_window
-            )  # self.data["time"].to_numpy()[-1] - self.time_window
-        except KeyError:
-            start_time = 0
 
         for i, name in enumerate(self.pv_list):
             ax = axes.flatten()[i]
